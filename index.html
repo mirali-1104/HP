@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hackathon Portal</title>
+    <link rel="icon" type="image/png" href="Frontend/Hackaton Logo.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="image.css">
+
+
+    <script src="form.js"></script>
+    <script src="image.js"></script>
+
+
+   <!-- Top Bar -->
+    <div class="top-bar">
+       <div class="top-left">
+        <a href="mailto:info@hackathonportal.com"><span>&#9993; info@hackathonportal.com</span></a> <!-- Email Icon as Link -->
+         <span> | </span>
+         <a href="https://www.google.com/search?q=niagara+college+toronto&oq=niagara+college+toronto++&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIMCAEQIxgnGIAEGIoFMgcIAhAAGIAEMgcIAxAAGIAEMgcIBBAAGIAEMg0IBRAuGK8BGMcBGIAEMgYIBhBFGDwyBggHEEUYPNIBCDg1OTZqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8&lqi=ChduaWFnYXJhIGNvbGxlZ2UgdG9yb250b0ja3dvG8rmAgAhaIxAAEAEYABgBGAIiF25pYWdhcmEgY29sbGVnZSB0b3JvbnRvkgEXZWR1Y2F0aW9uYWxfaW5zdGl0dXRpb26qAVQQASoTIg9uaWFnYXJhIGNvbGxlZ2UoADIeEAEiGoB_2JCqKy_a_fJh7VoXJdXnz_51Wb6dKueDMhsQAiIXbmlhZ2FyYSBjb2xsZWdlIHRvcm9udG8#rlimm=15216190212269838401" target="_blank">
+            <span>&#128205;Niagara College - Toronto</span></a> <!-- Location Icon with Link -->
+       </div>
+        <div class="top-right">
+            <a href="https://www.facebook.com/niagaracollegetoronto"><img src="Frontend/Facebook.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/niagaracollegetoronto"><img src="Frontend/Instagram.png" alt="Instagram"></a>
+            <a href="https://www.linkedin.com/school/niagara-college-toronto/"><img src="Frontend/Linkedin.png" alt="Linkedin"></a>
+            <a href="https://x.com/niagaratoronto"><img src="Frontend/Twitter.jpg" alt="Twitter"></a>
+        </div>
+    </div>
+
+        
+    <link rel="preload" href="Frontend/Image 1.jpg" as="image">
+    <link rel="preload" href="Frontend/Image 2.jpg" as="image">
+    <link rel="preload" href="Frontend/Image 3.jpg" as="image">
+    <link rel="preload" href="Frontend/Image 4.jpg" as="image">
+    <link rel="preload" href="Frontend/Image 9.jpg" as="image">
+    <link rel="preload" href="Frontend/Image 15.jpg" as="image">
+    <link rel="preload" href="Frontend/Image 12.jpg" as="image">
+    <link rel="preload" href="Frontend/Image 8.jpg" as="image">
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <img src="Frontend/Hackaton Logo.png" class="logo"> 
+                <div class="logo-text"><b>HACKATHON PORTAL</b></div>
+            </div>
+            <div class="nav-center">
+                <ul>
+                    <body id="home">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+            
+                    <li class="dropdown">
+                        <a href="#features">FEATURES</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#howitworks">How It Works</a></li>
+                            <li><a href="#past-hackathons">Past Hackathons</a></li>
+                        </ul>
+                    </li>
+            
+                    <li class="dropdown">
+                        <a href="hackathon-info.html">HACKATHON-INFO</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Challenge Details</a></li>
+                            <li><a href="#">Schedule</a></li>
+                        </ul>
+                    </li>
+            
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-right">
+                <ul>
+
+                    <li class="dropdown">
+                        <a href="login.html" class="btn1"><b>LOGIN</b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="adminlogin.html"  class="btn1">For Admin</a></li>
+                            <li><a href="judgelogin.html"  class="btn1">For Judges</a></li>
+                        </ul>
+                    </li>
+
+                   <li><a href="register.html" class="btn2"><b>REGISTER</b></a></li>
+
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="overlay"></div>
+        
+        <div class="hero-text">
+            <h1>WELCOME TO THE HACKATHON PORTAL</h1>
+            <p>Register as a Participant and be part of an exciting coding challenge!</p>
+            <a href="register.html" class="btn">Register Now</a>
+        </div>
+    </section>
+
+    <!--Section 1-->
+    <section>
+        <div id="features" class="container">
+            <h2 class="section-title">Join Hackathon 2025 for Innovation and Collaboration</h2>
+            <div class="features">
+                <div class="feature-box">
+                    <img src="Frontend/Foster.jpg" alt="Foster Collaboration">
+                    <h4>Foster Collaboration</h4>
+                    <p>Connect with talented individuals to collaboratively create innovative solutions addressing real-world challenges.</p>
+                </div>
+                <div class="feature-box">
+                    <img src="Frontend/Mentorship.jpg" alt="Receive Expert Mentorship">
+                    <h4>Receive Expert Mentorship</h4>
+                    <p>Access guidance from industry experts who will provide valuable feedback and insights throughout your journey.</p>
+                </div>
+                <div class="feature-box">
+                    <img src="Frontend/Solution.png" alt="Create Real-World Solutions">
+                    <h4>Create Real-World Solutions</h4>
+                    <p>Bring your ideas to life with your team while competing for exciting prizes and recognition in the tech community.</p>
+                </div>
+            </div>
+        </div>
+    
+    </section>    
+
+    <!--Section 2-->
+    <section id="about" class="hackathon-section">
+        <div class="content-box">
+            <h1><span>WHY HACKATHON?</span></h1>
+            <p>
+                A hackathon is a collaborative event where innovators solve real-world problems, 
+                fostering creativity, skill development, and networking. It offers career growth, 
+                mentorship, and opportunities to create impactful solutions. It empower the participants 
+                through innovation, inclusivity, and real-world challenges, driving meaningful change.
+            </p>
+            <a href="register.html" class="btn3">Join Hackathon</a>
+        </div>
+
+        <div class="floating-images">
+            <img src="Frontend/Image 14.jpg" alt="Hackathon Team" class="image-1">
+            <img src="Frontend/Image 16.jpg" alt="Hackathon Team" class="image-2">
+        </div>
+    </section>
+
+    <!--Section 3-->
+    <section class="section1">
+        <div class="grid-container">
+
+            <div class="card">
+                <div class="icon">&#128101;</div>
+                <h3>Networking Opportunities</h3>
+                <p>Connect with industry leaders, mentors, and peers, opening doors to potential internships and career paths.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">&#128161;</div>
+                <h3>Skill Development</h3>
+                <p>Sharpen your coding, design, and problem-solving abilities through hands-on workshops and mentorship.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">&#127759;</div>
+                <h3>Real-World Impact</h3>
+                <p>Contribute to solutions that address industry needs and social initiatives, making a difference in your community.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">&#129309;</div>
+                <h3>Inclusive Environment</h3>
+                <p>We welcome participants from all backgrounds and skill levels, ensuring a diverse and enriching experience.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!--Section 4-->
+    <section>
+        <div class="container4 text-center">
+            <div class="stats-container">
+                <div class="stat-box">5,000+ <br> <span>Participants Engaged</span></div>
+                <div class="stat-box">100+ <br> <span>Judges Participating</span></div>
+                <div class="stat-box1">150+ <br> <span>Hackathons Organized</span></div>
+                <div class="stat-box1">200+ <br> <span>Mentors</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!--Image Section-->
+    <section id="past-hackathons" class="past-hackathons">
+        <h2>PAST HACKATHON</h2>
+        <div class="slider-container">
+            <div class="slider">
+                <img src="Frontend/Image 1.jpg" class="slide active" alt="Hackathon 1">
+                <img src="Frontend/Image 10.jpg" class="slide" alt="Hackathon 2">
+                <img src="Frontend/Image 11.jpg" class="slide" alt="Hackathon 3">
+            </div>
+
+            <button class="slider-btn prev" id="prevBtn">&#10094;</button>
+            <button class="slider-btn next" id="nextBtn">&#10095;</button>
+
+        </div>
+    </section>
+
+    <!--Section 5-->
+    <section id="howitworks" class="hackathon-journey">
+        <h2 class="title">Hackathon Journey</h2>
+        <p class="subtitle">Your path from registration to victory</p>
+        <div class="steps-container">
+            <div class="step-box step-1">
+                <h3>Step 01</h3>
+                <h4>Register</h4>
+                <p>Sign up and create your team</p>
+            </div>
+            <div class="step-box step-2">
+                <h3>Step 02</h3>
+                <h4>Ideate</h4>
+                <p>Choose a challenge and start brainstorming</p>
+            </div>
+            <div class="step-box step-3">
+                <h3>Step 03</h3>
+                <h4>Develop</h4>
+                <p>Build your prototype and test it</p>
+            </div>
+            <div class="step-box step-4">
+                <h3>Step 04</h3>
+                <h4>Submit</h4>
+                <p>Upload your project for evaluation</p>
+            </div>
+            <div class="step-box step-5">
+                <h3>Step 05</h3>
+                <h4>Present</h4>
+                <p>Pitch your idea to judges</p>
+            </div>
+            <div class="step-box step-6">
+                <h3>Step 06</h3>
+                <h4>Win!</h4>
+                <p>Celebrate your achievement and receive prizes</p>
+            </div>
+        </div>
+    </section>
+    
+    <!--Section 6-->
+    <section class="participants">
+        <h2>Our Engaged Participants</h2>
+        <h3>Discover how our portal is enhancing your hackathon journey</h3>
+        <div class="participant-container">
+            
+
+            <div class="participant">
+                <img src="Frontend/Person1.jpg" alt="Sarah Thompson" class="participant-image">
+                <p class="participant-text">
+                    "The hackathon pushed my skills to new heights. The sense of community and collaboration was inspiring, 
+                    and I came away with valuable connections and experiences that I couldn't have gained elsewhere.<br> 
+                    A must for every participant!"
+                </p>
+                <p class="participant-author">SARAH THOMPSON</p>
+            </div>
+
+           
+            <div class="participant">
+                <img src="Frontend/Person2.jpg" alt="Daniel Lee" class="participant-image">
+                <p class="participant-text">
+                    "Working with mentors was seamless and incredibly valuable. The real-time communication tools made 
+                    it easy to get feedback that improved our project substantially!"
+                </p>
+                <p class="participant-author">DANIEL LEE</p>
+            </div>
+
+    
+            <div class="participant">
+                <img src="Frontend/Person3.jpg" alt="Emily Carter" class="participant-image">
+                <p class="participant-text">
+                    "The hackathon pushed my skills to new heights. The sense of community and collaboration was inspiring, 
+                     and I came away with valuable connections and experiences that I couldn't have gained elsewhere.!"
+                </p>
+                <p class="participant-author">EMILY CARTER</p>
+            </div>
+
+            <div class="participant">
+                <img src="Frontend/Person4.jpg" alt="Jessica Brown" class="participant-image">
+                <p class="participant-text">
+                    "I felt empowered by the support and mentorship available during the hackathon. 
+                    The event not only emphasized skill development but also encouraged networking with 
+                    industry leaders, opening up avenues I hadn’t considered.!"
+                </p>
+                <p class="participant-author">JESSICA BROWN</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!--Contact Section-->
+    <section id="contact"  class="contact-section">
+
+        <div class="contact-container">
+            <div class="contact-image">
+                <img src="Frontend/Contct.jpg" alt="Hackathon Theme">
+                <div class="contact-details">
+                    <h3>OUR CONTACT INFORMATION</h3>
+                    <h2>Our Contact Details</h2>
+                    <p><span>&#128222;</span> <a href="tel:+16477994830">+1 647-799-4830</a></p>
+                    <p><span>&#9993;</span> <a href="mailto:info@hackathonentry.com">info@hackathonentry.com</a></p>
+                    <p>&#128205; 740 Bathurst Street, Toronto,
+                        <br>ON M5S 2R6, Canada</p>
+                    <p>&#128338; Monday to Friday: 8:00 a.m. – 4:30 p.m.</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Connect with Hackathon Portal</h2>
+                <form action="#" method="POST">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+    
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+    
+                    <label for="phone">Contact No</label>
+                    <input type="tel" id="phone" name="phone" required>
+    
+                    <label for="message">Leave a message</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <div id="error-message" class="error"></div>
+                    <div id="success-message" class="success"></div>
+
+    
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+            <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>HACKATHON PORTAL</h3>
+                <p>
+                    The NCT Coding Club Hackathon Portal is a centralized platform designed to streamline hackathon 
+                    management at Niagara College - Toronto (NCT). It enhances collaboration, automates workflows, 
+                    and ensures a seamless hackathon experience for all stakeholders.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/niagaracollegetoronto">
+                        <img src="Frontend/Facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://x.com/niagaratoronto">
+                        <img src="Frontend/Twitter.jpg" alt="Twitter">
+                    </a>
+                    <a href="https://www.linkedin.com/school/niagara-college-toronto/">
+                        <img src="Frontend/Linkedin.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">  
+                <h3>Reach Us</h3>    
+                <p><a href="tel:+16477994830">+1 647-799-4830</a></p>
+                <p><a href="mailto:contact@nctcodingclub.com">contact@nctcodingclub.com</a></p>
+                <p>740 Bathurst Street, Toronto,
+                    <br>ON M5S 2R6, Canada</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+           <p>&copy; 2025 Hackathon Portal, All Rights Reserved</p> 
+        </div>
+    </footer>
+</body>
+</html>
+    

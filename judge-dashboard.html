@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCT Hackathon Judge Dashboard</title>
+    <link rel="stylesheet" href="judge-dashboard.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">NCT Hackathon</div>
+        <ul>
+            <li><a href="judge-dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="judge-submission.html">Submissions</a></li>
+            <li><a href="judge-evaluation.html">Evaluate</a></li>
+            <li><a href="judge-results.html">Results</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <button class="judge-btn">Judge</button>
+            <button id="logout-btn" class="logout-btn" onclick="window.location.href='index.html';">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to Judge Dashboard</h1>
+        <h2>Participating Groups</h2>
+        <input type="text" placeholder="Search groups..." class="search-bar">
+        
+        <div class="groups" id="groups-container">
+           
+        </div>
+    </div>
+
+    <script src="judge-dashboard.js"></script>
+    <script src="user-logout.js"></script>
+</body>
+</html>

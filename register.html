@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <link rel="icon" type="image/png" href="Frontend/Hackaton Logo.png">
+
+    <link rel="stylesheet" href="register.css"> 
+</head>
+<body>
+    <div class="container">
+        
+        <div class="left-section">
+            <h1>Register Your Team</h1>
+            <h2>For The Competition</h2>
+            <p>Secure your spot in this year's most prestigious college IT challenge. Registration is open until <strong>May 8, 2025</strong>.</p>
+
+            <div class="why-participate">
+                <h3>Why Participate?</h3>
+                <ul>
+                    <li>✔ Access to exclusive workshops by industry experts</li>
+                    <li>✔ Networking opportunities with tech companies</li>
+                    <li>✔ Valuable feedback from judges and mentors</li>
+                    <li>✔ Certificate of participation for all teams</li>
+                </ul>
+            </div>
+
+            <div class="dates">
+                <p>&#x1F4C5;<strong>Competition Dates:</strong> May 15-20, 2025</p>
+                <p>&#x23F3; <strong>Registration Deadline:</strong> May 8, 2025</p>
+            </div>
+        </div>
+
+        
+        <div class="right-section">
+            <h2>Team Information</h2>
+            <form id="registration-form">
+                <label>Team Name</label>
+                <input type="text" id="team-name" placeholder="Enter team name" required>
+
+                <label>Institution/University</label>
+                <input type="text" id="institution" placeholder="Enter your university" required>
+
+                <label>Contact Email</label>
+                <input type="email" id="email" placeholder="Enter email" required>
+
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+
+
+                <label>Team Members (comma separated)</label>
+                <input type="text" id="team-members" placeholder="e.g. John Doe, Jane Smith, Alex Johnson" required>
+
+                <label>Competition Category</label>
+                <select id="category">
+                    <option>Select a category</option>
+                    <option>Software Development</option>
+                    <option>Cybersecurity</option>
+                    <option>Data Science</option>
+                    <option>AI & Machine Learning</option>
+                </select>
+
+                <button type="submit">Complete Registration</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="register.js"></script> 
+</body>
+</html>

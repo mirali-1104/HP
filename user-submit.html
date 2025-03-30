@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Project - Hackathon</title>
+    <link rel="stylesheet" href="user-submit.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Hackathon Portal</div>
+        <ul>
+            <li><a href="user-dashboard.html">Dashboard</a></li>
+            <li><a href="user-submit.html" class="active">Submit Project</a></li>
+            <li><a href="user-projects.html">Projects</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <button class="judge-btn" id="user-name">User</button>
+            <button class="logout-btn" id="logout-btn">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Submit Your Hackathon Project</h1>
+        <p>Share your hackathon project with the world</p>
+
+        <form id="submit-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="project-name">Project Name *</label>
+                <input type="text" id="project-name" name="project-name" placeholder="Enter your project name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="project-description">Project Description *</label>
+                <textarea id="project-description" name="project-description" placeholder="Describe what your project does and the problem it solves..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="technologies-used">Technologies Used</label>
+                <div id="technologies-used">
+                    <input type="text" placeholder="Add a technology..." />
+                    <button type="button" id="add-tech-btn">Add</button>
+                </div>
+                <div id="tech-list"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="elevator-pitch">Elevator Pitch</label>
+                <textarea id="elevator-pitch" name="elevator-pitch" placeholder="Describe your elevator pitch for the project"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="project-files">Upload Project Files</label>
+                <input type="file" id="project-files" name="project-files[]" multiple accept=".zip,.jpg,.jpeg,.png,.pdf">
+                <small>Upload images, documents, or ZIP files related to your project.</small>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" id="submit-project-btn">Submit Project</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="user-submit.js"></script>
+    <script src="user-logout.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+
+    <link rel="icon" type="image/png" href="Frontend/Hackaton Logo.png">
+
+    <link rel="stylesheet" href="user-management.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>HACKATHON PORTAL</h2>
+            <button id="toggleBtn"><i class="fa fa-angle-left"></i></button>
+        </div> 
+        <ul class="sidebar-menu">
+            <li><a href="admin.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="adminteams.html"><i class="fa fa-users"></i> <span>Teams</span></a></li>
+            <li><a href="adminprojects.html"><i class="fa fa-file"></i> <span>Projects</span></a></li>
+            <li><a href="adminjudge.html"><i class="fa fa-award"></i> <span>Judges</span></a></li>
+            <li><a href="timeline.html"><i class="fa fa-clock"></i> <span>Timeline</span></a></li>
+            <li class="active"><a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="student-view.html" class="switch-view"><i class="fa fa-user"></i> <span>Switch to Student View</span></a>
+            <button id="logout-btn" class="logout-btn" onclick="window.location.href='index.html';">Logout</button>
+            <div class="user-profile">
+                <div class="user-icon">AD</div>
+                <div class="user-info">
+                    <h4>Admin User</h4>
+                    <p>admin@example.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search users..." id="search-user">
+            </div>
+            <div class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-dot"></span>
+            </div>
+        </div>
+
+        <div class="content-container">
+            <a href="settings.html" class="back-btn">← Back</a>
+            <h2>User Management</h2>
+
+            <a href="add-user.html">
+                <button id="add-user-btn">+ Add User</button>
+            </a>
+
+            <div class="bulk-delete">
+                <button id="bulk-delete-btn">Delete Selected</button>
+            </div>
+
+            <table id="user-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all" onclick="selectAll()"></th> 
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="user-list">
+
+                    <tr>
+                        <td><input type="checkbox" class="user-checkbox"></td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>Admin</td>
+                        <td>Active</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="user-checkbox"></td>
+                        <td>Jane Smith</td>
+                        <td>jane@example.com</td>
+                        <td>Judge</td>
+                        <td>Inactive</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="user-management.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - IT Competition</title>
+    <link rel="stylesheet" href="user-management.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>HACKATHON PORTAL</h2>
+            <button id="toggleBtn"><i class="fa fa-angle-left"></i></button>
+        </div> 
+        <ul class="sidebar-menu">
+            <li><a href="admin.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="adminteams.html"><i class="fa fa-users"></i> <span>Teams</span></a></li>
+            <li><a href="adminprojects.html"><i class="fa fa-file"></i> <span>Projects</span></a></li>
+            <li><a href="judging.html"><i class="fa fa-award"></i> <span>Judging</span></a></li>
+            <li><a href="timeline.html"><i class="fa fa-clock"></i> <span>Timeline</span></a></li>
+            <li class="active"><a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="student-view.html" class="switch-view"><i class="fa fa-user"></i> <span>Switch to Student View</span></a>
+            <a href="logout.html" class="logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
+            <div class="user-profile">
+                <div class="user-icon">AD</div>
+                <div class="user-info">
+                    <h4>Admin User</h4>
+                    <p>admin@example.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search users..." id="search-user">
+            </div>
+            <div class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-dot"></span>
+            </div>
+        </div>
+
+        <div class="content-container">
+            <a href="index.html" class="back-btn">← Back</a>
+            <h2>User Management</h2>
+
+            <div class="button-container">
+                <a href="add-user.html">
+                    <button id="add-user-btn">+ Add User</button>
+                </a>
+                <button id="edit-user-btn">Edit Selected</button> 
+            </div>
+
+            <div class="bulk-delete">
+                <button id="bulk-delete-btn">Delete Selected</button>
+            </div>
+
+            <table id="user-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all" onclick="selectAll()"></th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="user-list">
+
+                    <tr>
+                        <td><input type="checkbox" class="user-checkbox"></td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>Admin</td>
+                        <td>Active</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="user-checkbox"></td>
+                        <td>Jane Smith</td>
+                        <td>jane@example.com</td>
+                        <td>Judge</td>
+                        <td>Inactive</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="user-management.js"></script>
+</body>
+</html>

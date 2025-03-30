@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+
+    <link rel="icon" type="image/png" href="Frontend/Hackaton Logo.png">
+
+    <link rel="stylesheet" href="adminprojects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+     <!-- Sidebar -->
+    <div>      
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h2>HAKATHON PORTAL</h2>
+                <button id="toggleBtn"><i class="fa fa-angle-left"></i></button>
+            </div> 
+
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="admin.html"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="adminteams.html"><i class="fa fa-users"></i> <span>Teams</span></a>
+                </li>
+                <li class="active">
+                    <a href="adminprojects.html"><i class="fa fa-file"></i> <span>Projects</span></a>
+                </li>
+                <li>
+                    <a href="adminjudge.html"><i class="fa fa-award"></i> <span>Judges</span></a>
+                </li>
+                <li>
+                    <a href="timeline.html"><i class="fa fa-clock"></i> <span>Timeline</span></a>
+                </li>
+                <li>
+                    <a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a>
+                </li>
+            </ul>
+
+           <div class="sidebar-footer">
+              <a href="student-view.html" class="switch-view"><i class="fa fa-user"></i> <span>Switch to Student View</span></a>
+              <a href="logout.html" class="logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
+
+              <div class="user-profile">
+                  <div class="user-icon">AD</div>
+                  <div class="user-info">
+                  <h4>Admin User</h4>
+                  <p>admin@example.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div>
+     <!--Top Bar-->
+ <div class="top-bar">
+    <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search teams, projects, or judges...">
+    </div>
+    
+    <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+        <span class="notification-dot"></span>
+    </div>
+ </div>
+
+  <main class="content">
+     <div class="header2">
+       <div class="header">
+        <h2>Project Submissions</h2>
+        <button class="new-project-btn"><i class="fa fa-file"></i> New Project</button>
+       </div>
+     </div>
+
+        <section class="teams-projects"></section>
+            <div class="projects"> 
+                <div class="project-card">
+                    <h3>AI-Powered Learning Platform <span class="status reviewing">Reviewing</span></h3>
+                    <p>Team: Code Ninjas</p>
+                    <p>An adaptive learning platform that uses AI.</p>
+                    <p>📅 Submitted: 2023-09-15</p>
+                    <p>⭐ 8.5/10</p>
+                </div>         
+
+                <div class="project-card">
+                    <h3>AI-Powered Learning Platform <span class="status reviewing">Reviewing</span></h3>
+                    <p>Team: Code Ninjas</p>
+                    <p>An adaptive learning platform that uses AI.</p>
+                    <p>📅 Submitted: 2023-09-15</p>
+                    <p>⭐ 8.5/10</p>
+                </div>         
+            
+
+                <div class="project-card">
+                    <h3>AI-Powered Learning Platform <span class="status reviewing">Reviewing</span></h3>
+                    <p>Team: Code Ninjas</p>
+                    <p>An adaptive learning platform that uses AI.</p>
+                    <p>📅 Submitted: 2023-09-15</p>
+                    <p>⭐ 8.5/10</p>
+                </div>         
+            
+
+                <div class="project-card">
+                    <h3>AI-Powered Learning Platform <span class="status reviewing">Reviewing</span></h3>
+                    <p>Team: Code Ninjas</p>
+                    <p>An adaptive learning platform that uses AI.</p>
+                    <p>📅 Submitted: 2023-09-15</p>
+                    <p>⭐ 8.5/10</p>
+                </div>         
+            </div>
+        </section>
+ </main>
+</div>
+
+<script src="adminteams.js"></script>
+<script src="button.js"></script>
+</body>
+</html>

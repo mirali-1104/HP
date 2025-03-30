@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judge Dashboard - Results</title>
+    <link rel="stylesheet" href="judge-results.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">NCT Hackathon</div>
+        <ul>
+            <li><a href="judge-dashboard.html">Dashboard</a></li>
+            <li><a href="judge-submission.html">Submissions</a></li>
+            <li><a href="judge-evaluation.html">Evaluate</a></li>
+            <li><a href="judge-results.html" class="active">Results</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <button class="judge-btn">Judge</button>
+            <button id="logout-btn" class="logout-btn" onclick="window.location.href='index.html';">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Competition Results</h1>
+        <p>View final scores and rankings for all projects.</p>
+
+        <div class="ranking-section" id="ranking-section">
+            <!-- Default ranking placeholders -->
+            <div class="ranking-card first">
+                <h2>🏆 First Place</h2>
+                <h3 id="first-place-name">N/A</h3>
+                <p class="team" id="first-place-team">N/A</p>
+                <p class="score" id="first-place-score">0/50</p>
+                <ul class="criteria" id="first-place-criteria"></ul>
+            </div>
+
+            <div class="ranking-card second">
+                <h2>🥈 Second Place</h2>
+                <h3 id="second-place-name">N/A</h3>
+                <p class="team" id="second-place-team">N/A</p>
+                <p class="score" id="second-place-score">0/50</p>
+                <ul class="criteria" id="second-place-criteria"></ul>
+            </div>
+
+            <div class="ranking-card third">
+                <h2>🥉 Third Place</h2>
+                <h3 id="third-place-name">N/A</h3>
+                <p class="team" id="third-place-team">N/A</p>
+                <p class="score" id="third-place-score">0/50</p>
+                <ul class="criteria" id="third-place-criteria"></ul>
+            </div>
+        </div>
+
+        <div class="project-rankings">
+            <h2>Project Rankings</h2>
+            <div id="rankings-list">
+            </div>
+        </div>
+    </div>
+
+    <script src="judge-results.js"></script>
+</body>
+</html>

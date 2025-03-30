@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline</title>
+
+    <link rel="icon" type="image/png" href="Frontend/Hackaton Logo.png">
+
+    <link rel="stylesheet" href="timeline.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+         <!-- Sidebar -->
+         <div>      
+            <div id="sidebar" class="sidebar">
+                <div class="sidebar-header">
+                    <h2>HAKATHON PORTAL</h2>
+                    <button id="toggleBtn"><i class="fa fa-angle-left"></i></button>
+                </div> 
+    
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="admin.html"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="adminteams.html"><i class="fa fa-users"></i> <span>Teams</span></a>
+                    </li>
+                    <li>
+                        <a href="adminprojects.html"><i class="fa fa-file"></i> <span>Projects</span></a>
+                    </li>
+                    <li>
+                        <a href="adminjudge.html"><i class="fa fa-award"></i> <span>Judges</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="timeline.html"><i class="fa fa-clock"></i> <span>Timeline</span></a>
+                    </li>
+                    <li>
+                        <a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a>
+                    </li>
+                </ul>
+    
+               <div class="sidebar-footer">
+                  <a href="student-view.html" class="switch-view"><i class="fa fa-user"></i> <span>Switch to Student View</span></a>
+                  <a href="logout.html" class="logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
+    
+                  <div class="user-profile">
+                      <div class="user-icon">AD</div>
+                      <div class="user-info">
+                      <h4>Admin User</h4>
+                      <p>admin@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search settings...">
+            </div>
+            <div class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-dot"></span>
+            </div>
+        </div>
+        
+         <!-- Timeline -->
+         <div class="timeline-container">
+            <div class="timeline-header">
+                <h1>Competition Timeline</h1>
+                <p>Competition schedule and important dates</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-entry completed">
+                    <div class="timeline-status completed">
+                        <i class="fa fa-check-circle"></i>
+                    </div>
+                    <div class="entry-content">
+                        <h3>IT Innovation Challenge 2023</h3>
+                        <div class="entry-time">August 15 - October 30, 2023</div>
+                    </div>
+                </div>
+                <div class="timeline-entry completed">
+                    <div class="timeline-status completed">
+                        <i class="fa fa-check-circle"></i>
+                    </div>
+                    <div class="entry-content">
+                        <h3>Registration Period</h3>
+                        <p>Teams register for the competition and receive guidelines.</p>
+                        <div class="entry-time">August 15 - September 5, 2023</div>
+                    </div>
+                </div>
+                <div class="timeline-entry in-progress">
+                    <div class="timeline-status in-progress">
+                        <i class="fa fa-sync-alt"></i>
+                    </div>
+                    <div class="entry-content">
+                        <h3>Project Ideation Phase</h3>
+                        <p>Teams develop their project ideas and submit proposals.</p>
+                        <div class="entry-time">September 6 - September 20, 2023</div>
+                    </div>
+                </div>
+                <div class="timeline-entry upcoming">
+                    <div class="timeline-status upcoming">
+                        <i class="fa fa-circle"></i>
+                    </div>
+                    <div class="entry-content">
+                        <h3>Development Sprint</h3>
+                        <p>Teams work on implementing their projects with weekly check-ins.</p>
+                        <div class="entry-time">September 21 - October 15, 2023</div>
+                        <span class="time-left">14 days left</span>
+                    </div>
+                </div>
+                <div class="timeline-entry upcoming">
+                    <div class="timeline-status upcoming">
+                        <i class="fa fa-circle"></i>
+                    </div>
+                    <div class="entry-content">
+                        <h3>Project Submission Deadline</h3>
+                        <p>Final project submissions with all required documentation.</p>
+                        <div class="entry-time">October 16, 2023</div>
+                        <span class="time-left">In 30 days</span>
+                    </div>
+                </div>
+                <div class="timeline-entry upcoming">
+                    <div class="timeline-status upcoming">
+                        <i class="fa fa-circle"></i>
+                    </div>
+                    <div class="entry-content">
+                        <h3>Judging Period</h3>
+                        <p>Judges review and score all submitted projects.</p>
+                        <div class="entry-time">October 17 - October 25, 2023</div>
+                        <span class="time-left">In 38 days</span>
+                    </div>
+                </div>
+                <div class="timeline-entry upcoming">
+                    <div class="timeline-status upcoming">
+                        <i class="fa fa-circle"></i>
+                    </div>
+                    <div class="entry-content">
+                        <h3>Awards Ceremony</h3>
+                        <p>Winners announced and prizes awarded.</p>
+                        <div class="entry-time">October 30, 2023</div>
+                        <span class="time-left">In 45 days</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+                <button class="add-event-btn" onclick="window.location.href='addevent.html'">Add Event</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="timeline.js"></script>
+</body>
+</html>

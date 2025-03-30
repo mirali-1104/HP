@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Template</title>
+
+    <link rel="icon" type="image/png" href="Frontend/Hackaton Logo.png">
+
+    <link rel="stylesheet" href="add-template.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>HACKATHON PORTAL</h2>
+            <button id="toggleBtn"><i class="fa fa-angle-left"></i></button>
+        </div> 
+        <ul class="sidebar-menu">
+            <li><a href="admin.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="adminteams.html"><i class="fa fa-users"></i> <span>Teams</span></a></li>
+            <li><a href="adminprojects.html"><i class="fa fa-file"></i> <span>Projects</span></a></li>
+            <li><a href="adminjudge.html"><i class="fa fa-award"></i> <span>Judges</span></a></li>
+            <li><a href="timeline.html"><i class="fa fa-clock"></i> <span>Timeline</span></a></li>
+            <li class="active"><a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="student-view.html" class="switch-view"><i class="fa fa-user"></i> <span>Switch to Student View</span></a>
+            <a href="logout.html" class="logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
+            <div class="user-profile">
+                <div class="user-icon">AD</div>
+                <div class="user-info">
+                    <h4>Admin User</h4>
+                    <p>admin@example.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search settings...">
+            </div>
+            <div class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-dot"></span>
+            </div>
+        </div>
+        
+        <!-- Add Template Page Content -->
+        <div class="content-container">
+            <a href="index.html" class="back-btn">← Back</a>
+            <h2>Add Event Template</h2>
+
+            <form class="add-template-form">
+                <label for="template-name">Event Template Name</label>
+                <input type="text" id="template-name" name="template-name" placeholder="Enter template name" required>
+
+                <label for="template-type">Event Type</label>
+                <select id="template-type" name="template-type" required>
+                    <option value="submission">Submission</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="judging">Judging</option>
+                    <option value="announcement">Announcement</option>
+                </select>
+
+                <label for="template-duration">Event Duration (days)</label>
+                <input type="number" id="template-duration" name="template-duration" placeholder="Enter duration in days" required>
+
+                <button type="submit">Save Template</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

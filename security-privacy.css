@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    overflow: auto;
+    padding-top: 10px;
+    transition: width 0.3s ease-in-out;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center; 
+    padding-left: 10px;
+    color: #000000;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.sidebar-header button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    background-color: #b4b9c7;
+    margin-right: 15px;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.sidebar-menu li {
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-bottom: 10px;
+}
+
+.sidebar-menu li a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-menu li i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.sidebar-menu li:hover,
+.sidebar-menu .active {
+    background: #e5efff;
+    color: #1d4ed8;
+    border-radius: 8px;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 20px;
+    border-top: 1px solid #ddd;
+    background-color: #f9fafb;
+}
+
+.sidebar-footer a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.sidebar-footer a i {
+    margin-right: 10px;
+}
+
+.sidebar-footer a:hover {
+    color: #1d4ed8;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #1d4ed8;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.user-info h4 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.user-info p {
+    margin: 0;
+    font-size: 12px;
+    color: gray;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar.collapsed .sidebar-header h2,
+.sidebar.collapsed .sidebar-menu li span,
+.sidebar.collapsed .sidebar-footer a span,
+.sidebar.collapsed .user-info {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-menu li {
+    justify-content: center;
+    margin-left: -5px;
+    border-radius: 8px;
+    padding:  20px 10px;
+    padding-right: 30px;
+}
+
+.sidebar.collapsed .sidebar-menu li i {
+    margin-right: 0;
+}
+
+.sidebar.collapsed .user-profile {
+    justify-content: center;
+}
+
+.sidebar.collapsed .user-icon {
+   margin-left: -30px;
+}
+
+.sidebar.collapsed .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar.collapsed .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar {
+    width: calc(100% - 300px);
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 300px;
+    height: 60px;
+    z-index: 10;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.search-box i {
+    margin-right: 10px;
+    color: gray;
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+}
+
+.notification-icon {
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    position: relative;
+}
+
+.notification-dot {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 8px;
+    height: 8px;
+    background-color: blue;
+    border-radius: 50%;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar.collapsed .sidebar-header h2,
+.sidebar.collapsed .sidebar-menu li span,
+.sidebar.collapsed .sidebar-footer a span,
+.sidebar.collapsed .user-info {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-menu li {
+    justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-menu li i {
+    margin-right: 0;
+}
+
+.main-content {
+    margin-left: 300px;
+    margin-top: 80px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.settings-container {
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex-grow: 1;
+    margin-top: 20px;
+    max-width: 100%; 
+    margin-bottom: 20px; 
+}
+
+.settings-container h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.settings-container .setting-item {
+    margin-bottom: 20px;
+}
+
+.settings-container label {
+    font-size: 16px;
+    margin: 10px 0;
+    display: block;
+}
+
+.settings-container input[type="text"],
+.settings-container input[type="number"],
+.settings-container input[type="checkbox"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.settings-container input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.settings-container button {
+    background-color: #1d4ed8;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.settings-container button:hover {
+    background-color: #2563eb;
+}
+
+.back-btn {
+    font-size: 16px;
+    color: #1d4ed8;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .top-bar {
+        left: 60px;
+        width: calc(100% - 60px);
+    }
+
+    .main-content {
+        margin-left: 60px;
+    }
+
+    .settings-container {
+        margin-left: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .settings-container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

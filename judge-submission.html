@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Submissions</title>
+    <link rel="stylesheet" href="judge-submission.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">NCT Hackathon</div>
+        <ul>
+            <li><a href="judge-dashboard.html">Dashboard</a></li>
+            <li><a href="judge-submission.html" class="active">Submissions</a></li>
+            <li><a href="judge-evaluation.html">Evaluate</a></li>
+            <li><a href="judge-results.html">Results</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <button class="judge-btn">Judge</button>
+            <button id="logout-btn" class="logout-btn" onclick="window.location.href='index.html';">Logout</button>
+        </div>
+    </nav>
+
+    <header class="header">
+        <h1>Project Submissions</h1>
+        <p>Browse and manage all competition entries.</p>
+        <div class="search-filter">
+            <input type="text" id="search" placeholder="Search projects...">
+            <select id="statusFilter">
+                <option value="all">All Statuses</option>
+                <option value="pending">Pending</option>
+                <option value="evaluated">Evaluated</option>
+                <option value="finalists">Finalists</option>
+            </select>
+        </div>
+    </header>
+
+    <main class="projects-container" id="projects-container">
+    </main>
+
+    <script src="judge-submission.js"></script>
+    <script src="judge-logout.js"></script>
+</body>
+</html>

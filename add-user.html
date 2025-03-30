@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+
+    <link rel="icon" type="image/png" href="Frontend/Hackaton Logo.png">
+
+    <link rel="stylesheet" href="add-user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>HACKATHON PORTAL</h2>
+            <button id="toggleBtn"><i class="fa fa-angle-left"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="admin.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="adminteams.html"><i class="fa fa-users"></i> <span>Teams</span></a></li>
+            <li><a href="adminprojects.html"><i class="fa fa-file"></i> <span>Projects</span></a></li>
+            <li><a href="adminjudge.html"><i class="fa fa-award"></i> <span>Judges</span></a></li>
+            <li><a href="timeline.html"><i class="fa fa-clock"></i> <span>Timeline</span></a></li>
+            <li class="active"><a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="student-view.html" class="switch-view"><i class="fa fa-user"></i> <span>Switch to Student View</span></a>
+            <a href="logout.html" class="logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
+            <div class="user-profile">
+                <div class="user-icon">AD</div>
+                <div class="user-info">
+                    <h4>Admin User</h4>
+                    <p>admin@example.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search settings...">
+            </div>
+            <div class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-dot"></span>
+            </div>
+        </div>
+
+        <!-- Add User Form -->
+        <div class="content-container">
+            <a href="user-management.html" class="back-btn">← Back</a>
+            <h2>Add New User</h2>
+
+            <form class="add-user-form">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter user's full name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter user's email" required>
+
+                <label for="role">Role</label>
+                <select id="role" name="role" required>
+                    <option value="Admin">Admin</option>
+                    <option value="Judge">Judge</option>
+                    <option value="Participant">Participant</option>
+                </select>
+
+                <label for="status">Status</label>
+                <select id="status" name="status" required>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+
+                <button type="submit">Add User</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
