@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   try {
     // ✅ 2. Fetch user details from Student collection using email
     const userResponse = await fetch(
-      `http://localhost:5000/api/student?email=${userEmail}`
+      `http://localhost:5000/api/students?email=${userEmail}`
     );
     const student = await userResponse.json();
 

@@ -2,20 +2,28 @@ const express = require("express");
 const router = express.Router();
 const Student = require("../models/student");
 
-// ✅ Fetch Student by Email
+// ✅ Fetch all students or a student by email if provided
 router.get("/", async (req, res) => {
   const { email } = req.query;
-  if (!email) return res.status(400).json({ msg: "Email is required" });
 
-  try {
-    const student = await Student.findOne({ email });
-    if (!student) return res.status(404).json({ msg: "Student not found" });
-
-    res.json(student);
-  } catch (err) {
-    res.status(500).json({ msg: "Server error", error: err.message });
+  if (email) {
+    try {
+      const student = await Student.findOne({ email });
+      if (!student) return res.status(404).json({ msg: "Student not found" });
+      return res.json(student);
+    } catch (err) {
+      return res.status(500).json({ msg: "Server error", error: err.message });
+    }
+  } else {
+    try {
+      const students = await Student.find();
+      return res.json(students);
+    } catch (err) {
+      return res.status(500).json({ msg: "Server error", error: err.message });
+    }
   }
 });
+
 // ✅ Update Student Data
 router.put("/:id", async (req, res) => {
   const { id } = req.params;

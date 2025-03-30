@@ -1,56 +1,83 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const groupsContainer = document.getElementById("groups-container");
+document.addEventListener("DOMContentLoaded", function () {
+  const groupsContainer = document.getElementById("groups-container");
+  const searchInput = document.getElementById("search-input");
 
-    const demoProjects = [
-        {
-            _id: "67d7fcc0c730914492ab1b78",
-            teamName: "REXO",
-            institution: "XYZ University",
-            email: "studentteam@gmail.com",
-            password: "teamalpha123",
-            category: "AI & Machine Learning",
-            teamMembers: ["John", "Emma", "Mia"],
-            registeredAt: "2025-03-17T10:43:12.509+00:00"
-        },
-        {
-            _id: "67d8921e92cbf224eb989217",
-            teamName: "Code Ninjas",
-            institution: "Niagara College",
-            email: "codeninja@gmail.com",
-            password: "password123",
-            category: "Software Development",
-            teamMembers: ["Alice", "Alex", "Ameen"],
-            registeredAt: "2025-03-17T10:43:12.509+00:00"
-        },
-        {
-            _id: "67d8921e92cbf224eb989218", 
-            teamName: "REXO",
-            institution: "RCHM",
-            email: "adhithsc8646@gmail.com",
-            password: "#909R89YJL",
-            category: "Software Development",
-            teamMembers: ["Beru", "Igriz", "Iron", "Aizen"],
-            registeredAt: "2025-03-17T10:43:12.509+00:00"
-        }
-    ];
+  if (!groupsContainer || !searchInput) {
+    console.error("Required elements not found in the DOM.");
+    return;
+  }
 
-    function createProjectCard(project) {
-        const card = document.createElement("div");
-        card.classList.add("group-card");
+  async function fetchStudents() {
+    try {
+      const response = await fetch("http://localhost:5000/api/students");
+      if (!response.ok) throw new Error("Failed to fetch students");
 
-        card.innerHTML = `
-            <h3>${project.teamName}</h3>
-            <p><strong>Institution:</strong> ${project.institution}</p>
-            <p><strong>Category:</strong> ${project.category}</p>
-            <p><strong>Team Members:</strong> ${project.teamMembers.join(", ")}</p>
-            <p><strong>Email:</strong> ${project.email}</p>
-            <p><strong>Registered At:</strong> ${new Date(project.registeredAt).toLocaleDateString()}</p>
+      const students = await response.json();
+      console.log("Fetched students:", students); // Log the fetched data
+
+      if (students.length === 0) {
+        console.warn("No students found.");
+        groupsContainer.innerHTML = "<p>No students available.</p>";
+      } else {
+        displayStudents(students);
+      }
+    } catch (error) {
+      console.error("Error fetching students:", error);
+      groupsContainer.innerHTML =
+        "<p>Error fetching students. Please try again later.</p>";
+    }
+  }
+
+  function displayStudents(students) {
+    groupsContainer.innerHTML = ""; // Clear previous results
+    students.forEach(createProjectCard);
+  }
+
+  function createProjectCard(student) {
+    const card = document.createElement("div");
+    card.classList.add("group-card");
+
+    card.innerHTML = `
+            <h3>${student.teamName}</h3>
+            <p><strong>User ID:</strong> ${student.userId}</p>
+            <p><strong>Institution:</strong> ${student.institution}</p>
+            <p><strong>Category:</strong> ${student.category}</p>
+            <p><strong>Team Members:</strong> ${student.teamMembers.join(
+              ", "
+            )}</p>
+            <p><strong>Email:</strong> ${student.email}</p>
+            <p><strong>Project Submitted:</strong> ${
+              student.projectSubmitted ? "Yes" : "No"
+            }</p>
+            <p><strong>Registered At:</strong> ${new Date(
+              student.registeredAt
+            ).toLocaleDateString()}</p>
         `;
 
-        groupsContainer.appendChild(card);
-    }
+    groupsContainer.appendChild(card);
+  }
 
-    demoProjects.forEach(project => {
-        createProjectCard(project);
+  function filterStudents() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const cards = groupsContainer.getElementsByClassName("group-card");
+
+    Array.from(cards).forEach((card) => {
+      const teamName = card.querySelector("h3").textContent.toLowerCase();
+      const institution = card
+        .querySelector("p:nth-child(3)")
+        .textContent.toLowerCase();
+      const category = card
+        .querySelector("p:nth-child(4)")
+        .textContent.toLowerCase();
+
+      const matchesSearch =
+        teamName.includes(searchTerm) ||
+        institution.includes(searchTerm) ||
+        category.includes(searchTerm);
+      card.style.display = matchesSearch ? "block" : "none";
     });
+  }
+
+  searchInput.addEventListener("input", filterStudents);
+  fetchStudents();
 });
