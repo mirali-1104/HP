@@ -20,6 +20,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+  
 
 const uploadFolder = path.join(__dirname, "uploads"); // Ensure correct path
 
@@ -53,6 +54,7 @@ app.use("/api/student", studentAuthRoutes);
 app.use("/api/user", submitProjectRoute);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/students", studentRoutes);
+app.use("/api/projects", require("./routes/projectRoutes"));
 app.use("/api", require("./routes/projectRoutes"));
 
 const PORT = process.env.PORT || 5000;
