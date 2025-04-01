@@ -62,8 +62,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         displayProjects(filteredProjects);
     }
 
+    // Navigate to evaluation page with projectId
     window.evaluateProject = function (projectId) {
-        alert(`Evaluating project: ${projectId}`);
+        // Redirect to the evaluation page, passing the project ID in the URL
+        window.location.href = `/evaluation?projectId=${projectId}`;
     };
 
     // Event Listeners for Search and Filter

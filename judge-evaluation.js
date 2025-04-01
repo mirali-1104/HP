@@ -1,96 +1,70 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    const projectsContainer = document.getElementById("projects-container");
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get("projectId");
 
-    async function fetchProjects() {
-        try {
-          projectsContainer.innerHTML = "<p>Loading projects...</p>";
-      
-          const response = await fetch("http://localhost:5000/api/judge/projects", {
-            method: "GET",
-            credentials: "include", // Make sure credentials are sent
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-      
-          if (!response.ok) {
-            throw new Error("Failed to fetch projects");
-          }
-      
-          const data = await response.json();
-          displayProjects(data.projects || []);
-      
-        } catch (error) {
-          console.error("Error loading projects:", error);
-          projectsContainer.innerHTML = "<p style='color: red;'>Error loading projects. Please try again later.</p>";
-        }
-      }
-      
-    function displayProjects(projects) {
-        projectsContainer.innerHTML = "";
-
-        if (projects.length === 0) {
-            projectsContainer.innerHTML = "<p>No projects submitted yet.</p>";
-            return;
-        }
-
-        projects.forEach(project => {
-            const projectCard = document.createElement("div");
-            projectCard.classList.add("card");
-
-            projectCard.innerHTML = `
-                <h2>${project.name}</h2>
-                <p class="team">${project.team}</p>
-                <p>${project.description}</p>
-                <div class="tags">
-                    ${project.technologies.map(tech => `<span>${tech}</span>`).join("")}
-                </div>
-                <form class="evaluation-form" data-id="${project.id}">
-                    <label>Ideation Score (0-10): <input type="number" name="ideation" min="0" max="10" required></label>
-                    <label>Modularity Score (0-10): <input type="number" name="modularity" min="0" max="10" required></label>
-                    <button type="submit">Submit Evaluation</button>
-                </form>
-            `;
-
-            projectsContainer.appendChild(projectCard);
-        });
+    // Check if the projectId is passed
+    if (!projectId) {
+        document.body.innerHTML = "<h2>Error: No project selected for evaluation.</h2>";
+        return;
     }
 
-    projectsContainer.addEventListener("submit", async function (event) {
-        if (event.target.classList.contains("evaluation-form")) {
-            event.preventDefault();
-            
-            const form = event.target;
-            const projectId = form.getAttribute("data-id");
-            const ideationScore = form.ideation.value;
-            const modularityScore = form.modularity.value;
+    const projectDetails = document.getElementById("project-details");
+    const evaluationForm = document.getElementById("evaluation-form");
 
-            try {
-                const response = await fetch(`http://localhost:5000/api/projects/evaluate/${projectId}`, {
-                    method: "POST",
-                    credentials: "include",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        ideationScore: Number(ideationScore),
-                        modularityScore: Number(modularityScore)
-                    })
-                });
+    // Fetch project details
+    async function fetchProjectDetails() {
+        try {
+            const response = await fetch(`http://localhost:5000/api/projects/${projectId}`);
+            const project = await response.json();
 
-                if (!response.ok) {
-                    throw new Error("Failed to submit evaluation");
-                }
-
-                alert("Evaluation submitted successfully!");
-                form.reset();
-                fetchProjects(); // Refresh project list
-            } catch (error) {
-                console.error("Error submitting evaluation:", error);
-                alert("Error submitting evaluation. Please try again.");
+            if (!project.projectName) {
+                projectDetails.innerHTML = "<p>Project not found.</p>";
+                return;
             }
+
+            projectDetails.innerHTML = `
+                <h2>${project.projectName}</h2>
+                <p><strong>Email:</strong> ${project.email}</p>
+                <p>${project.description}</p>
+                <p><strong>Technologies:</strong> ${project.technologies.join(", ")}</p>
+            `;
+        } catch (error) {
+            projectDetails.innerHTML = "<p>Error loading project details.</p>";
+        }
+    }
+
+    // Submit evaluation form
+    evaluationForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const ideationScore = document.getElementById("ideationScore").value;
+        const modularityScore = document.getElementById("modularityScore").value;
+        const comments = document.getElementById("comments").value;
+
+        try {
+            const response = await fetch(`http://localhost:5000/api/projects/evaluate/${projectId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    ideationScore: Number(ideationScore),
+                    modularityScore: Number(modularityScore),
+                    comments: comments
+                }),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert("Evaluation submitted successfully!");
+                window.location.href = "judge-dashboard.html"; // Navigate to judge-dashboard.html after successful submission
+            } else {
+                alert("Error: " + result.error);
+            }
+        } catch (error) {
+            alert("Failed to submit evaluation.");
         }
     });
 
-    fetchProjects();
+    fetchProjectDetails(); // Load project details when page loads
 });

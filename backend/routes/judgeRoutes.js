@@ -1,66 +1,60 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Project = require('../models/project'); // Ensure you're importing the correct project model
-const Group = require('../models/Group');  // Assuming you still want to handle groups
+const Project = require("../models/project"); // Ensure correct import
 
-
-// Route to fetch projects that need evaluation
-router.get('/projects', async (req, res) => {
+// Fetch all pending projects
+router.get("/api/projects/pending", async (req, res) => {
   try {
-    const projects = await Project.find(); // Fetch all projects
+    const projects = await Project.find({ finalStatus: "pending" });
     res.json(projects);
   } catch (error) {
+    console.error("❌ Error fetching projects:", error);
     res.status(500).json({ error: "Error fetching projects" });
   }
 });
 
-
-// Route to evaluate a project
-router.put('/evaluate/:projectId', async (req, res) => {
+// Fetch a specific project by ID
+router.get("/api/projects/:id", async (req, res) => {
   try {
-    const { ideationScore, maturityScore, status } = req.body;
-    const { projectId } = req.params;
-
-    // Validate the incoming data
-    if (typeof ideationScore !== "number" || typeof maturityScore !== "number" || !status) {
-      return res.status(400).json({ error: "Invalid evaluation data" });
-    }
-
-    // Find the project by ID and update it with the evaluation data
-    const project = await Project.findByIdAndUpdate(
-      projectId,
-      {
-        ideationScore, 
-        maturityScore,
-        status,  // status should be one of 'pending', 'evaluated', or 'finalized'
-      },
-      { new: true } // Return the updated project
-    );
-
-    if (!project) {
-      return res.status(404).json({ error: "Project not found" });
-    }
-
-    console.log("✅ Project evaluated:", project);
-    res.json({
-      message: "Project evaluated successfully",
-      project,
-    });
+    const project = await Project.findById(req.params.id);
+    if (!project) return res.status(404).json({ error: "Project not found" });
+    res.json(project);
   } catch (error) {
-    console.error('❌ Error evaluating project:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("❌ Error fetching project:", error);
+    res.status(500).json({ error: "Error fetching project details" });
   }
 });
 
-// Route to fetch all groups with active sessions or logged-in status
-router.get('/groups', async (req, res) => {
+// Evaluate a project
+router.put("/api/projects/evaluate/:id", async (req, res) => {
   try {
-    const groups = await Group.find({ isLoggedIn: true });
-    console.log("Fetched groups:", groups); 
-    res.status(200).json(groups);
+    const { ideationScore, modularityScore, comments } = req.body;
+    const { id } = req.params;
+
+    // Validate inputs
+    if (typeof ideationScore !== "number" || typeof modularityScore !== "number") {
+      return res.status(400).json({ error: "Scores must be numbers" });
+    }
+
+    // Update project evaluation
+    const project = await Project.findByIdAndUpdate(
+      id,
+      {
+        ideationScore,
+        modularityScore,
+        comments,
+        finalStatus: "evaluated",
+      },
+      { new: true }
+    );
+
+    if (!project) return res.status(404).json({ error: "Project not found" });
+
+    console.log("✅ Project evaluated:", project);
+    res.json({ message: "Evaluation submitted successfully", project });
   } catch (error) {
-    console.error('Error fetching groups:', error);
-    res.status(500).json({ error: 'Failed to retrieve groups' });
+    console.error("❌ Error evaluating project:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
