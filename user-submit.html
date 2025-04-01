@@ -15,7 +15,7 @@
             <li><a href="user-projects.html">Projects</a></li>
         </ul>
         <div class="nav-buttons">
-            <button class="judge-btn" id="user-name">User</button>
+            <button class="judge-btn" id="user-btn">User</button>
             <button class="logout-btn" id="logout-btn">Logout</button>
         </div>
     </nav>
@@ -25,6 +25,11 @@
         <p>Share your hackathon project with the world</p>
 
         <form id="submit-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="leader-name">Leader Name *</label>
+                <input type="text" id="leader-name" name="leader-name" placeholder="Enter leader's name" required>
+            </div>
+
             <div class="form-group">
                 <label for="project-name">Project Name *</label>
                 <input type="text" id="project-name" name="project-name" placeholder="Enter your project name" required>
@@ -54,7 +59,7 @@
                 <input type="file" id="project-files" name="project-files[]" multiple accept=".zip,.jpg,.jpeg,.png,.pdf">
                 <small>Upload images, documents, or ZIP files related to your project.</small>
             </div>
-
+            
             <div class="form-actions">
                 <button type="submit" id="submit-project-btn">Submit Project</button>
             </div>
@@ -62,6 +67,5 @@
     </div>
 
     <script src="user-submit.js"></script>
-    <script src="user-logout.js"></script>
 </body>
 </html>

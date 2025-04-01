@@ -19,7 +19,12 @@ const StudentSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   category: { type: String, required: true },
-  teamMembers: [{ type: String }],
+  teamMembers: [
+    {
+      name: String,
+      role: String,
+    },
+  ],
   registeredAt: { type: Date, default: Date.now },
   projectSubmitted: { type: Boolean, default: false },
 });

@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const techInput = document.querySelector("#technologies-used input");
   const addTechBtn = document.getElementById("add-tech-btn");
   const techListDiv = document.getElementById("tech-list");
+  const userBtn = document.getElementById("user-btn");
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  if (!isLoggedIn) {
+    window.location.href = "index.html";
+  }
 
   const user = JSON.parse(localStorage.getItem("user"));
   if (!user || !user.email) {
@@ -10,7 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const userEmail = user.email;
+  if (userBtn) {
+    userBtn.addEventListener(
+      "click",
+      () => (window.location.href = "profile.html")
+    );
+  }
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  if (!storedUser || !storedUser.email) {
+    alert("❌ No logged-in user found!");
+    window.location.href = "login.html"; // Redirect to login
+    return;
+  }
+  const userEmail = storedUser.email;
+
   let technologies = [];
 
   // Add technology to list
@@ -43,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   submitForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    const leaderName = document.getElementById("leader-name").value.trim();
     const projectName = document.getElementById("project-name").value.trim();
     const projectDescription = document
       .getElementById("project-description")
@@ -52,12 +72,14 @@ document.addEventListener("DOMContentLoaded", () => {
       .value.trim();
     const projectFiles = document.getElementById("project-files").files;
 
+    if (!leaderName) return alert("Leader Name is required.");
     if (!projectName) return alert("Project Name is required.");
     if (!projectDescription) return alert("Project Description is required.");
     if (!projectFiles.length) return alert("Please upload a file.");
 
     const formData = new FormData();
     formData.append("email", userEmail);
+    formData.append("leaderName", leaderName);
     formData.append("projectName", projectName);
     formData.append("description", projectDescription);
     formData.append("technologies", technologies.join(","));
@@ -87,4 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("An error occurred while submitting the project.");
     }
   });
+});
+document.getElementById("logout-btn").addEventListener("click", function () {
+  localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("userData");
+
+  window.location.href = "index.html";
 });

@@ -1,12 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Student = require('../models/student');
+const Student = require("../models/student");
 
+// Register Route
+router.post("/register", async (req, res) => {
+  const { teamName, institution, email, password, category, teamMembers } =
+    req.body;
 
-router.post('/register', async (req, res) => {
-  const { teamName, institution, email, password, category, teamMembers } = req.body;
-
-  console.log("📥 Received data:", req.body);
+  console.log("\ud83d\udce5 Received data:", req.body);
 
   try {
     const existingStudent = await Student.findOne({ email });
@@ -14,9 +15,13 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ msg: "Email already registered." });
     }
 
+    // Ensure teamMembers is an array of objects { name, role }
     const formattedTeamMembers = Array.isArray(teamMembers)
-      ? teamMembers.map(member => member.trim()) 
-      : teamMembers.split(",").map(member => member.trim());
+      ? teamMembers.map(({ name, role }) => ({
+          name: name.trim(),
+          role: role.trim(),
+        }))
+      : [];
 
     const newStudent = new Student({
       teamName,
@@ -24,21 +29,21 @@ router.post('/register', async (req, res) => {
       email,
       password,
       category,
-      teamMembers: formattedTeamMembers 
+      teamMembers: formattedTeamMembers,
     });
 
     await newStudent.save();
-    console.log("✅ Student registered:", newStudent);
+    console.log("\u2705 Student registered:", newStudent);
 
     res.status(201).json({ msg: "Registration successful." });
   } catch (err) {
-    console.error("🚨 Registration Error:", err);
+    console.error("\ud83d\udea8 Registration Error:", err);
     res.status(500).json({ msg: "Server error." });
   }
 });
 
 // Student Login Route
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -54,15 +59,21 @@ router.post('/login', async (req, res) => {
 
     res.json({
       token: "dummy_token_student",
-      user: { email: student.email, name: student.teamName }
+      user: {
+        _id: student._id,
+        email: student.email,
+        name: student.teamName,
+        members: student.teamMembers,
+      },
     });
   } catch (err) {
-    console.error("🚨 Student Login Error:", err);
+    console.error("\ud83d\udea8 Student Login Error:", err);
     res.status(500).json({ msg: "Server error." });
   }
 });
 
-router.get('/team/:email', async (req, res) => {
+// Fetch Team by Email
+router.get("/team/:email", async (req, res) => {
   const email = req.params.email;
 
   try {

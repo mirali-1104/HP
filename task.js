@@ -10,24 +10,34 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   const userEmail = user.email;
+  const userID = localStorage.getItem("userID"); // ✅ Declare userID here
 
   async function fetchTasks() {
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/tasks?email=${userEmail}`
-      );
-      const tasks = await response.json();
+    console.log("🛠 Checking stored userID:", userID); // Debugging
 
-      taskList.innerHTML = "";
+    if (!userID || userID === "null") {
+      console.error("❌ No valid user ID found in localStorage");
+      return; // Exit function to prevent errors
+    }
+
+    try {
+     const response = await fetch(
+       `http://localhost:5000/api/tasks?userId=${encodeURIComponent(userID)}` // ✅ Change `userID` to `userId`
+     );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const tasks = await response.json();
+      console.log("✅ Fetched tasks:", tasks);
+
+      taskList.innerHTML = ""; // Clear previous tasks
+
       tasks.forEach((task) => {
-        const taskItem = document.createElement("li");
-        taskItem.innerHTML = `
-                    ${task.name} 
-                    <button class="complete-btn" data-id="${task._id}">${
-          task.checked ? "✅ Completed" : "Mark as Completed"
-        }</button>
-                `;
-        taskList.appendChild(taskItem);
+        const li = document.createElement("li");
+        li.textContent = task.name; // Assuming task object has "name"
+        taskList.appendChild(li);
       });
     } catch (error) {
       console.error("❌ Error fetching tasks:", error);
@@ -42,11 +52,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     try {
-      await fetch("http://localhost:5000/api/tasks", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: userEmail, taskName }),
-      });
+   await fetch("http://localhost:5000/api/tasks", {
+     method: "POST",
+     headers: { "Content-Type": "application/json" },
+     body: JSON.stringify({ userId: userID, name: taskName }), // ✅ Include `userId`
+   });
 
       taskInput.value = "";
       fetchTasks();

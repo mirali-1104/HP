@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-
     <link rel="icon" type="image/png" href="Frontend/Hackaton Logo.png">
-
     <link rel="stylesheet" href="register.css"> 
 </head>
 <body>
     <div class="container">
-        
         <div class="left-section">
             <h1>Register Your Team</h1>
             <h2>For The Competition</h2>
             <p>Secure your spot in this year's most prestigious college IT challenge. Registration is open until <strong>May 8, 2025</strong>.</p>
-
+            
             <div class="why-participate">
                 <h3>Why Participate?</h3>
                 <ul>
@@ -33,7 +30,6 @@
             </div>
         </div>
 
-        
         <div class="right-section">
             <h2>Team Information</h2>
             <form id="registration-form">
@@ -49,18 +45,25 @@
                 <label>Password</label>
                 <input type="password" id="password" placeholder="Enter password" required>
 
-
-                <label>Team Members (comma separated)</label>
-                <input type="text" id="team-members" placeholder="e.g. John Doe, Jane Smith, Alex Johnson" required>
-
                 <label>Competition Category</label>
-                <select id="category">
-                    <option>Select a category</option>
-                    <option>Software Development</option>
-                    <option>Cybersecurity</option>
-                    <option>Data Science</option>
-                    <option>AI & Machine Learning</option>
+                <select id="category" required>
+                    <option value="">Select a category</option>
+                    <option value="Software Development">Software Development</option>
+                    <option value="Cybersecurity">Cybersecurity</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="AI & Machine Learning">AI & Machine Learning</option>
                 </select>
+
+                <h3>Team Members</h3>
+                <div id="team-members-container">
+                    <div class="team-member">
+                        <input type="text" placeholder="Member Name" class="member-name" required>
+                        <input type="text" placeholder="Role (e.g. Developer, Designer)" class="member-role" required>
+                        <button type="button" class="remove-member">❌</button>
+                    </div>
+                </div>
+
+                <button type="button" id="add-member">➕ Add Member</button>
 
                 <button type="submit">Complete Registration</button>
             </form>

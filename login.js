@@ -27,11 +27,22 @@ document
 
       if (response.ok) {
         alert("✅ Login Successful! Redirecting to Dashboard...");
-
+        localStorage.setItem("isLoggedIn", "true");
         // Store user details in localStorage
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
         localStorage.setItem("userEmail", enteredEmail); // ✅ Store email for task handling
+
+        let loggedInUser = data.user.members.find(
+          (member) => member.email === enteredEmail
+        );
+
+        if (loggedInUser && loggedInUser._id) {
+          localStorage.setItem("userID", loggedInUser._id);
+          console.log("✅ Stored userID:", loggedInUser._id); // Debugging
+        } else {
+          console.warn("⚠️ No user ID found in members list.");
+        }
 
         window.location.href = "user-dashboard.html"; // Redirect to dashboard
       } else {

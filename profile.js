@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   const passwordInput = document.getElementById("password");
   const profileForm = document.getElementById("profile-form");
 
-  let userId;
   let teamMembers = [];
+  let userId = null;
 
   const storedUser = JSON.parse(localStorage.getItem("user"));
   if (!storedUser || !storedUser.email) {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/student?email=${storedUser.email}`
+      `http://localhost:5000/api/students?email=${storedUser.email}`
     );
 
     if (!response.ok) {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const student = await response.json();
 
-    userId = student._id;
+    userId = student.userId;
     teamNameInput.value = student.teamName || "";
     emailInput.value = student.email || "";
     teamMembers = student.teamMembers || [];
@@ -41,20 +41,27 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   function renderTeamMembers() {
     teamMembersDiv.innerHTML = "";
+
     teamMembers.forEach((member, index) => {
       const memberElement = document.createElement("div");
-      memberElement.innerHTML = `${member} <button data-index="${index}" class="remove-member">Remove</button>`;
+      memberElement.innerHTML = `
+        <strong>${member.name}</strong> - ${member.role} 
+        <button data-index="${index}" class="remove-member">Remove</button>
+      `;
       teamMembersDiv.appendChild(memberElement);
     });
   }
 
   addMemberBtn.addEventListener("click", function () {
-    const newMember = newMemberInput.value.trim();
-    if (newMember) {
-      teamMembers.push(newMember);
-      renderTeamMembers();
-      newMemberInput.value = "";
-    }
+    const newMemberName = newMemberInput.value.trim();
+    if (!newMemberName) return;
+
+    const newMemberRole = prompt("Enter role for this team member:");
+    if (!newMemberRole) return;
+
+    teamMembers.push({ name: newMemberName, role: newMemberRole });
+    renderTeamMembers();
+    newMemberInput.value = "";
   });
 
   teamMembersDiv.addEventListener("click", function (e) {
@@ -70,6 +77,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (!userId) {
       alert("User ID not found. Cannot update profile.");
+      console.error("🚨 User ID is missing. Check API response!");
       return;
     }
 
@@ -86,14 +94,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/student/${userId}`,
+        `http://localhost:5000/api/students/${userId}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: updatedEmail,
             ...(updatedPassword && { password: updatedPassword }),
-            teamName: updatedTeamName, // ✅ Ensure teamName is sent
+            teamName: updatedTeamName,
             teamMembers,
           }),
         }
@@ -116,7 +124,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       );
 
       alert("Profile updated successfully!");
-      window.location.href = "user-dashboard.html"; // ✅ Redirect after success
+      window.location.href = "user-dashboard.html";
     } catch (error) {
       console.error("Error updating profile:", error);
       alert("Failed to update profile. Please try again.");
