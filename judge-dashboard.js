@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const groupsContainer = document.getElementById("groups-container");
   const searchInput = document.getElementById("search-input");
+  
 
   if (!groupsContainer || !searchInput) {
     console.error("Required elements not found in the DOM.");
@@ -36,15 +37,16 @@ document.addEventListener("DOMContentLoaded", function () {
   function createProjectCard(student) {
     const card = document.createElement("div");
     card.classList.add("group-card");
+    const teamMemberNames = student.teamMembers
+      .map((member) => member.name)
+      .join(", ");
 
     card.innerHTML = `
             <h3>${student.teamName}</h3>
             <p><strong>User ID:</strong> ${student.userId}</p>
             <p><strong>Institution:</strong> ${student.institution}</p>
             <p><strong>Category:</strong> ${student.category}</p>
-            <p><strong>Team Members:</strong> ${student.teamMembers.join(
-              ", "
-            )}</p>
+             <p><strong>Team Members:</strong> ${teamMemberNames}</p>
             <p><strong>Email:</strong> ${student.email}</p>
             <p><strong>Project Submitted:</strong> ${
               student.projectSubmitted ? "Yes" : "No"
