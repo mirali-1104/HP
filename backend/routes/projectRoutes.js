@@ -105,5 +105,42 @@ router.get("/projects/team/:teamName", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+router.get("/api/projects/:id", async (req, res) => {
+  try {
+      let project;
+      
+      if (mongoose.Types.ObjectId.isValid(req.params.id)) {
+          // If it's a valid ObjectId, search normally
+          project = await Project.findById(req.params.id);
+      } else {
+          // If it's stored as a string, search by _id as a string
+          project = await Project.findOne({ _id: req.params.id });
+      }
+
+      if (!project) {
+          return res.status(404).json({ error: "Project not found" });
+      }
+      res.json(project);
+  } catch (error) {
+      res.status(500).json({ error: "Internal server error" });
+  }
+});
+router.get("/results", async (req, res) => {
+  try {
+      // Fetch all projects with their scores
+      const projects = await Project.find({}, "projectName teamName finalScore criteria").sort({ finalScore: -1 });
+
+      if (!projects || projects.length === 0) {
+          return res.status(404).json({ message: "No project results found" });
+      }
+
+      res.status(200).json(projects);
+  } catch (error) {
+      console.error("Error fetching project results:", error);
+      res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+
 
 module.exports = router;

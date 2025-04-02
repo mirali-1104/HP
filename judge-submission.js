@@ -1,13 +1,23 @@
+// Define evaluateProject globally
+window.evaluateProject = function (projectId) {
+    if (!projectId) {
+        console.error("Invalid project ID");
+        return;
+    }
+    console.log("Redirecting to:", `/evaluation?projectId=${projectId}`);
+    window.location.href = `/evaluation?projectId=${projectId}`;
+};
+
 document.addEventListener("DOMContentLoaded", async function () {
     const projectsContainer = document.getElementById("projects-container");
     const searchInput = document.getElementById("search");
     const statusFilter = document.getElementById("statusFilter");
-    let allProjects = []; // Store all projects for filtering
+    let allProjects = [];
 
-    // Fetch projects from backend
+    // Fetch projects
     async function fetchProjects() {
         try {
-            const response = await fetch("http://localhost:5000/api/projects"); // Fetch from backend
+            const response = await fetch("http://localhost:5000/api/projects");
             allProjects = await response.json();
             displayProjects(allProjects);
         } catch (error) {
@@ -16,16 +26,16 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // Display filtered projects
+    // Display projects
     function displayProjects(projects) {
-        projectsContainer.innerHTML = ""; 
+        projectsContainer.innerHTML = "";
 
         if (projects.length === 0) {
             projectsContainer.innerHTML = "<p>No projects found.</p>";
             return;
         }
 
-        projects.forEach(project => {
+        projects.forEach((project) => {
             const projectCard = document.createElement("div");
             projectCard.classList.add("project-card");
 
@@ -35,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <p>${project.description}</p>
                 <p><strong>Status:</strong> ${project.submissionStatus}</p>
                 <div class="tech-stack">
-                    ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
+                    ${project.technologies.map((tech) => `<span>${tech}</span>`).join("")}
                 </div>
                 <footer class="card-footer">
                     <span>${new Date(project.createdAt).toLocaleDateString()}</span>
@@ -47,30 +57,34 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    // Search & Filter Projects
+    // Redirect to evaluation page
+    window.evaluateProject = function (projectId) {
+        if (!projectId) {
+            console.error("Invalid project ID");
+            return;
+        }
+        window.location.href = `judge-evaluation.html?projectId=${projectId}`;
+    };
+
+    // Filter projects
     function filterProjects() {
         const searchTerm = searchInput.value.toLowerCase();
         const selectedStatus = statusFilter.value.toLowerCase();
 
-        const filteredProjects = allProjects.filter(project =>
-            (project.projectName.toLowerCase().includes(searchTerm) ||
-             project.description.toLowerCase().includes(searchTerm) ||
-             project.technologies.some(tech => tech.toLowerCase().includes(searchTerm))) &&
-            (selectedStatus === "all" || project.submissionStatus.toLowerCase() === selectedStatus)
+        const filteredProjects = allProjects.filter(
+            (project) =>
+                (project.projectName.toLowerCase().includes(searchTerm) ||
+                    project.description.toLowerCase().includes(searchTerm) ||
+                    project.technologies.some((tech) => tech.toLowerCase().includes(searchTerm))) &&
+                (selectedStatus === "all" || project.submissionStatus.toLowerCase() === selectedStatus)
         );
 
         displayProjects(filteredProjects);
     }
 
-    // Navigate to evaluation page with projectId
-    window.evaluateProject = function (projectId) {
-        // Redirect to the evaluation page, passing the project ID in the URL
-        window.location.href = `/evaluation?projectId=${projectId}`;
-    };
-
-    // Event Listeners for Search and Filter
+    // Event listeners
     searchInput.addEventListener("input", filterProjects);
     statusFilter.addEventListener("change", filterProjects);
 
-    fetchProjects(); // Fetch and display projects on page load
+    fetchProjects();
 });
