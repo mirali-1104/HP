@@ -1,213 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
 
-    <link rel="icon" type="image/png" href="Frontend/Hackaton Logo.png">
+    <link rel="icon" type="image/png" href="Frontend/Hackaton Logo.png" />
+    <link rel="stylesheet" href="admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
 
-    <link rel="stylesheet" href="admin.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    
+  </head>
+  <body>
     <!-- Sidebar -->
-    <div>      
-        <div id="sidebar" class="sidebar">
-            <div class="sidebar-header">
-                <h2>HAKATHON PORTAL</h2>
-                <button id="toggleBtn"><i class="fa fa-angle-left"></i></button>
-            </div> 
-
-            <ul class="sidebar-menu">
-                <li class="active">
-                    <a href="admin.html"><i class="fa fa-home"></i> <span>Dashboard</span></a>
-                </li>
-                <li>
-                    <a href="adminteams.html"><i class="fa fa-users"></i> <span>Teams</span></a>
-                </li>
-                <li>
-                    <a href="adminprojects.html"><i class="fa fa-file"></i> <span>Projects</span></a>
-                </li>
-                <li>
-                    <a href="adminjudge.html"><i class="fa fa-award"></i> <span>Judges</span></a>
-                </li>
-                <li>
-                    <a href="timeline.html"><i class="fa fa-clock"></i> <span>Timeline</span></a>
-                </li>
-                <li>
-                    <a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a>
-                </li>
-            </ul>
-
-           <div class="sidebar-footer">
-              <a href="student-view.html" class="switch-view"><i class="fa fa-user"></i> <span>Switch to Student View</span></a>
-              <a href="index.html" class="logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
-
-              <div class="user-profile">
-                  <div class="user-icon">AD</div>
-                  <div class="user-info">
-                  <h4>Admin User</h4>
-                  <p>admin@example.com</p>
-                </div>
-            </div>
+    <div>
+      <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+          <h2>HAKATHON PORTAL</h2>
+          <button id="toggleSidebarButton"><i class="fa fa-angle-left"></i></button>
         </div>
-    </div>
-</div>
 
-<!-- Main Content -->
-<div>
-     <!--Top Bar-->
- <div class="top-bar">
-    <div class="search-box">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search teams, projects, or judges...">
-    </div>
-    
-    <div class="notification-icon">
-        <i class="fas fa-bell"></i>
-        <span class="notification-dot"></span>
-    </div>
- </div>
+        <ul class="sidebar-menu">
+          <li class="active">
+            <a href="admin.html"><i class="fa fa-home"></i> <span>Dashboard</span></a>
+          </li>
+          <li>
+            <a href="adminteams.html"><i class="fa fa-users"></i> <span>Teams</span></a>
+          </li>
+          <li>
+            <a href="adminprojects.html"><i class="fa fa-file"></i> <span>Projects</span></a>
+          </li>
+          <li>
+            <a href="adminjudge.html"><i class="fa fa-award"></i> <span>Judges</span></a>
+          </li>
+          <li>
+            <a href="announcement.html"><i class="fa fa-cog"></i> <span>Announcements</span></a>
+          </li>
+        </ul>
 
-    <main class="content">
+        <div class="sidebar-footer">
+          <a href="index.html" class="logout"><i class="fa fa-sign-out"></i> <span>Logout</span></a>
+          <div class="user-profile" id="userProfile">
+            <div class="user-icon">AD</div>
+            <div class="user-info">
+              <span id="adminNameDisplay">Admin Name</span><br />
+              <span id="adminEmailDisplay">admin@example.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="content">
+      <!-- Top Bar -->
+      <div class="top-bar" id="topBar">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            placeholder="Search teams, projects, or judges..."
+          />
+        </div>
+
+        <div class="notification-icon">
+          <i class="fas fa-bell"></i>
+          <span class="notification-dot"></span>
+        </div>
+      </div>
+
+      <main class="content">
         <header>
-            <h1>HACKATHON DASHBOARD</h1>
-            <p>Manage teams, projects, and judging for your competition</p>
+          <h1>HACKATHON DASHBOARD</h1>
+          <p>Manage teams, projects, and judging for your competition</p>
         </header>
 
         <div class="stats-container">
-            <a href="/teams" class="stat-card">
-                <div class="stat-content">
-                    <p class="stat-title">Total Teams</p>
-                    <h2>24</h2>
-                    <p class="stat-growth">↑ 12% since last week</p>
-                </div>
-                <div class="stat-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-            </a>
-        
-            <a href="/projects" class="stat-card">
-                <div class="stat-content">
-                    <p class="stat-title">Project Submissions</p>
-                    <h2>18</h2>
-                    <p class="stat-growth">↑ 8% since last week</p>
-                </div>
-                <div class="stat-icon">
-                    <i class="fas fa-file-alt"></i>
-                </div>
-            </a>
-        
-            <a href="/judges" class="stat-card">
-                <div class="stat-content">
-                    <p class="stat-title">Judges</p>
-                    <h2>8</h2>
-                </div>
-                <div class="stat-icon">
-                    <i class="fas fa-award"></i>
-                </div>
-            </a>
-        
-            <a href="/countdown" class="stat-card">
-                <div class="stat-content">
-                    <p class="stat-title">Days Remaining</p>
-                    <h2>14</h2>
-                </div>
-                <div class="stat-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-            </a>
-        </div>
-        
-        
+          <a href="/teams" class="stat-card c1">
+            <div class="stat-content">
+              <p class="stat-title">Total Teams</p>
+              <h2 id="totalTeamsCount"></h2> <!-- Dynamically filled with Total Teams -->
+              <p class="stat-growth" id="totalTeamsGrowth"></p>
+            </div>
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+          </a>
 
-     <div class="header1">
-        <div class="header">
+          <a href="/projects" class="stat-card c2">
+            <div class="stat-content">
+              <p class="stat-title">Project Submissions</p>
+              <h2 id="totalProjectsCount"></h2>
+            </div>
+            <div class="stat-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+          </a>
+
+          <a href="/judges" class="stat-card">
+            <div class="stat-content">
+              <p class="stat-title">Judges</p>
+              <h2 id="totalJudgeCount"></h2>
+            </div>
+            <div class="stat-icon">
+              <i class="fas fa-award"></i>
+            </div>
+          </a>
+
+          <a href="/countdown" class="stat-card">
+            <div class="stat-content">
+              <p class="stat-title">Days Remaining</p>
+              <h2>14</h2>
+            </div>
+            <div class="stat-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+          </a>
+        </div>
+
+        <div class="header1">
+          <div class="header">
             <button class="add-team-btn"><i class="fa fa-users"> </i> Add Team</button>
             <h2>TEAM</h2>
+          </div>
         </div>
-     </div>
 
         <section class="teams-projects">
-            <div class="teams">
-                <div class="team-card">
-                    <h3>Code Ninjas <span class="status active">Active</span></h3>
-                    <p>AI-Powered Learning Platform</p>
-                    <p><strong>Team Members:</strong></p>
-                    <div class="team-members">
-                        <span class="member">🔵 Alex Johnson • Team Lead</span>
-                        <span class="member">🔵 Sarah Williams • Developer</span>
-                        <span class="member">🔵 Mike Chen • Designer</span>
-                    </div>
-                </div>
-        
-                <div class="team-card">
-                    <h3>Pixel Pioneers <span class="status active">Active</span></h3>
-                    <p>Augmented Reality Navigation</p>
-                    <p><strong>Team Members:</strong></p>
-                    <div class="team-members">
-                        <span class="member">🔵 Emma Davis • Team Lead</span>
-                        <span class="member">🔵 James Wilson • Developer</span>
-                        <span class="member">🔵 Olivia Brown • UX Researcher</span>
-                    </div>
-                </div>
+         <div id="groupsContainer" class="team-cards-container"></div>
 
-                <div class="team-card">
-                    <h3>Code Ninjas <span class="status active">Active</span></h3>
-                    <p>AI-Powered Learning Platform</p>
-                    <p><strong>Team Members:</strong></p>
-                    <div class="team-members">
-                        <span class="member">🔵 Alex Johnson • Team Lead</span>
-                        <span class="member">🔵 Sarah Williams • Developer</span>
-                        <span class="member">🔵 Mike Chen • Designer</span>
-                    </div>
-                </div>
+          <div class="header2">
+            <div class="header" >
+              <h2>Project Submissions</h2>
+            </div>
+          </div>
 
-                <div class="team-card">
-                    <h3>Code Ninjas <span class="status active">Active</span></h3>
-                    <p>AI-Powered Learning Platform</p>
-                    <p><strong>Team Members:</strong></p>
-                    <div class="team-members">
-                        <span class="member">🔵 Alex Johnson • Team Lead</span>
-                        <span class="member">🔵 Sarah Williams • Developer</span>
-                        <span class="member">🔵 Mike Chen • Designer</span>
-                    </div>
-                </div>
-            </div>
-        
-         <div class="header2">
-            <div class="header">
-                <h2>Project Submissions</h2>
-                <button class="new-project-btn"><i class="fa fa-file"></i> New Project</button>
-            </div>
-         </div>
-
-            <div class="projects"> 
-                <div class="project-card">
-                    <h3>AI-Powered Learning Platform <span class="status reviewing">Reviewing</span></h3>
-                    <p>Team: Code Ninjas</p>
-                    <p>An adaptive learning platform that uses AI.</p>
-                    <p>📅 Submitted: 2023-09-15</p>
-                    <p>⭐ 8.5/10</p>
-                </div>
-        
-                <div class="project-card">
-                    <h3>Augmented Reality Navigation <span class="status approved">Approved</span></h3>
-                    <p>Team: Pixel Pioneers</p>
-                    <p>AR application that overlays navigation instructions on the real world.</p>
-                    <p>📅 Submitted: 2023-09-14</p>
-                    <p>⭐ 9.2/10</p>
-                </div>
-            </div>
+         <div class="container">
+    <h1>Project Dashboard</h1>
+    <div id="project-cards-container" class="project-cards-container"></div>
+  </div>
         </section>
-        
-    </main>
-</div>
+      </main>
+    </div>
 
-<script src="admin.js"></script>
-<script src="button.js"></script>
-</body>
+    <!-- Modal Structure -->
+    <div id="profileModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Profile</h2>
+        <form id="profileForm">
+          <label for="adminName">Name:</label>
+          <input type="text" id="adminName" name="adminName" required />
+          <label for="adminEmail">Email:</label>
+          <input type="email" id="adminEmail" name="adminEmail" required />
+          <label for="adminPassword">Password:</label>
+          <input type="password" id="adminPassword" name="adminPassword" />
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+    <script defer src="admin.js"></script>
+    <script src="button.js"></script>
+  </body>
 </html>
